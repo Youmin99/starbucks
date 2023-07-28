@@ -1,13 +1,15 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import swaggerJSDoc from 'swagger-jsdoc'
-//import { options } from './swagger/config.js'// index.js
+import {options} from './swagger/config.js'// index.js
+
+// config.js
 
 
 
 const app = express()
 app.use(express.json())
-//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)));
 
 
 app.get('/users', (req, res) => {
@@ -61,7 +63,7 @@ app.get('/starbucks', (req, res) => {
 
 
 
-app.listen(3000, () => {
+app.listen(5000, () => {
   console.log("백엔드 API 서버가 켜졌어요!!!");
-  console.log(`http://localhost:3000/`)
+  console.log(`http://localhost:5000/`)
 });

@@ -3,7 +3,7 @@
  * @swagger
  * /starbucks:
  *   get:
- *     summary: 게시글 가져오기
+ *     summary: 게시글 등록하기
  *     tags: [starbucks]
  *     parameters:
  *       - in: query
@@ -11,19 +11,23 @@
  *         type: int
  *     responses:
  *       200:
- *         description: success
+ *         description: 성공
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 properties:
- *                   name:
- *                     type: string
- *                     example: americano
- *                   kcal:
+ *                   number:
  *                     type: int
  *                     example: 1
+ *                   writer:
+ *                     type: string
+ *                     example: 영희
+ *                   title:
+ *                     type: string
+ *                     example: 좋은아침 입니다~
+ *                   contents:
+ *                     type: string
+ *                     example: 오늘 하루도 파이팅 하세요!
  */
-
-
