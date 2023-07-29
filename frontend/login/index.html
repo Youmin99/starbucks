@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>로그인/회원가입</title>
+    <title>login/create account</title>
     <link rel="stylesheet" href="./index.css" />
     <script src="./index.js"></script>
     <script src="./signup.js"></script>
@@ -16,45 +16,18 @@
       <!-- 여기서부터 회원가입 모달창 -->
       <div id="ModalContainer" onclick="CloseModal()"></div>
       <div id="SignupModalWrapper">
-        <div class="SignupTitle">회원가입</div>
+        <div class="SignupTitle">create account</div>
         <div class="SignupInputWrapper">
-          <span class="SignupInputName">이름</span>
+          <span class="SignupInputName">name</span>
           <input
             id="SignupName"
             class="SignupInput"
             type="text"
-            placeholder="이름을 입력해주세요"
+            placeholder="write name"
           />
         </div>
         <div class="SignupInputWrapper">
-          <span class="SignupInputName">주민등록번호</span>
-          <div style="display: flex; align-items: center">
-            <input
-              id="SignupPersonal"
-              style="width: 40%; text-align: center"
-              class="SignupInput"
-              type="text"
-              maxlength="6"
-            />
-            <span
-              style="
-                text-align: center;
-                color: #fff;
-                padding: 0 5px 0 5px;
-                font-size: 20px;
-              "
-              >-
-            </span>
-            <input
-              style="width: 40%; text-align: center"
-              class="SignupInput"
-              type="password"
-              maxlength="7"
-            />
-          </div>
-        </div>
-        <div class="SignupInputWrapper">
-          <span class="SignupInputName">핸드폰 번호</span>
+          <span class="SignupInputName">phone number</span>
           <div
             style="
               display: flex;
@@ -68,14 +41,14 @@
                 class="SignupInput"
                 type="text"
                 maxlength="3"
-                value="010"
+                value="778"
                 readonly
               /><span class="PhoneSlash">-</span
               ><input
                 id="PhoneNumber02"
                 class="SignupInput"
                 type="text"
-                maxlength="4"
+                maxlength="3"
               /><span class="PhoneSlash">-</span
               ><input
                 id="PhoneNumber03"
@@ -85,7 +58,7 @@
               />
             </div>
             <span class="NumberVailidationBtn" onclick="getValidationNumber()"
-              >인증 번호 전송</span
+              >send validation code</span
             >
           </div>
           <div
@@ -96,43 +69,43 @@
               id="TokenInput"
               class="ValidationInput"
               type="text"
-              placeholder="전송 받은 인증번호를 입력해주세요"
+              placeholder="type validation code"
             />
             <span id="LimitTime">1:00</span>
             <div class="NumberVailidationBtn" onclick="submitToken()">
-              인증 완료
+              validation
             </div>
           </div>
         </div>
         <div class="SignupInputWrapper">
-          <span class="SignupInputName">좋아하는 사이트</span>
+          <span class="SignupInputName">favorite site</span>
           <input
             id="SignupPrefer"
             class="SignupInput"
             type="text"
-            placeholder="좋아하는 사이트를 입력해주세요"
+            placeholder="write favorite site"
           />
         </div>
         <div class="SignupInputWrapper">
-          <span class="SignupInputName">이메일</span>
+          <span class="SignupInputName">email</span>
           <input
             id="SignupEmail"
             class="SignupInput"
             type="text"
-            placeholder="이메일을 입력해주세요"
+            placeholder="enter email"
           />
         </div>
         <div class="SignupInputWrapper">
-          <span class="SignupInputName">비밀번호</span>
+          <span class="SignupInputName">password</span>
           <input
             id="SignupPwd"
             class="SignupInput"
             type="password"
-            placeholder="비밀번호를 입력해주세요"
+            placeholder="enter password"
           />
         </div>
         <div class="ButtonWrapper">
-          <div class="Signup" onclick="submitSignup()">회원 가입</div>
+          <div class="Signup" onclick="submitSignup()">create account</div>
         </div>
       </div>
 
@@ -143,27 +116,19 @@
         <div class="LogoWrapper">
           <img class="LogoImg" src="../img/starbucks.png" />
           <div class="LogoTitle">CodeBucks</div>
-          <a href="../menu/index.html" class="Menu_Button"> 메뉴 바로가기</a>
+          <a href="../menu/index.html" class="Menu_Button"> go to  meun</a>
         </div>
         <div id="SocialLoginGoogle">
           <img class="SocialLoginButtonImg" src="../img/google.png" />
-          <div class="SocialLoginButtonTitle">구글로 로그인</div>
-        </div>
-        <div id="SocialLoginNaver">
-          <img class="SocialLoginButtonImg" src="../img/naver.png" />
-          <div class="SocialLoginButtonTitle">네이버로 로그인</div>
-        </div>
-        <div id="SocialLoginKakao">
-          <img class="SocialLoginButtonImg" src="../img/kakao.png" />
-          <div class="SocialLoginButtonTitle">카카오톡으로 로그인</div>
+          <div class="SocialLoginButtonTitle">login goole</div>
         </div>
         <div id="SocialLoginFacebook">
           <img class="SocialLoginButtonImg" src="../img/facebook.png" />
-          <div class="SocialLoginButtonTitle">페이스북으로 로그인</div>
+          <div class="SocialLoginButtonTitle">login facebook</div>
         </div>
         <div class="SignupWrapper">
-          아직 회원이 아니신가요?
-          <span class="SignupButton" onclick="OpenModal()">가입 하기</span>
+          if you don't have account
+          <span class="SignupButton" onclick="OpenModal()">create account</span>
         </div>
       </div>
     </div>

@@ -1,9 +1,8 @@
 import express from 'express'
 import swaggerUi from 'swagger-ui-express'
 import swaggerJSDoc from 'swagger-jsdoc'
-import {options} from './swagger/config.js'// index.js
+import {options} from './swagger/config.js'
 import cors from 'cors';
-// config.js
 
 
 
@@ -19,27 +18,26 @@ app.get('/users', (req, res) => {
        
 { 
 	email : "aaa@gmail.com", 
-	name : "철수",
+	name : "aaa",
 	phone : "010-1234-5678",
 	personal : "220110-2222222",
 	prefer : "https://naver.com"
 },
 { 
 	email : "aaa@gmail.com", 
-	name : "철수",
+	name : "aaa",
 	phone : "010-1234-5678",
 	personal : "220110-2222222",
 	prefer : "https://naver.com"
 },
 { 
 	email : "aaa@gmail.com", 
-	name : "철수",
+	name : "aaa",
 	phone : "010-1234-5678",
 	personal : "220110-2222222",
 	prefer : "https://naver.com"
 }]
 
-  // 2. 꺼내온 결과 응답 주기
   res.send(result);
 });
 

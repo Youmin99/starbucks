@@ -44,13 +44,13 @@ body {
 }
 #SignupModalWrapper {
   overflow: scroll;
-  height: 930px;
+  height: 750px;
   padding: 50px 50px;
   display: none;
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 30px;
+  top: 100px;
   background-color: rgba(3, 102, 53, 0.9);
   border-radius: 30px;
   -ms-overflow-style: none; /* IE and Edge */
@@ -137,7 +137,7 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 10px;
   padding: 20px;
   /* width: 100px; */
   color: #fff;
@@ -176,23 +176,8 @@ body {
   font-size: 26px;
   font-weight: bold;
 }
-#SocialLoginKakao {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 76px;
-  border-radius: 20px;
-  padding: 3px 0;
-  color: #fae100;
-  border: 2px solid #fae100;
-  margin: 5px 0;
-  cursor: pointer;
-}
-#SocialLoginKakao:hover {
-  background-color: #fae100;
-  color: #fff;
-}
+
+
 #SocialLoginGoogle {
   display: flex;
   align-items: center;
@@ -210,23 +195,7 @@ body {
   background-color: #eceff1;
   color: #000;
 }
-#SocialLoginNaver {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 76px;
-  border-radius: 20px;
-  padding: 3px 0;
-  color: #2db400;
-  border: 2px solid #2db400;
-  margin: 5px 0;
-  cursor: pointer;
-}
-#SocialLoginNaver:hover {
-  background-color: #2db400;
-  color: #fff;
-}
+
 #SocialLoginFacebook {
   display: flex;
   align-items: center;
