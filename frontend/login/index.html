@@ -1,136 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>login/create account</title>
-    <link rel="stylesheet" href="./index.css" />
-    <script src="./index.js"></script>
-    <script src="./signup.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  </head>
-  <body>
-    <!-- 전체 컨테이너 -->
-    <div class="Container">
-      <!-- 여기서부터 회원가입 모달창 -->
-      <div id="ModalContainer" onclick="CloseModal()"></div>
-      <div id="SignupModalWrapper">
-        <div class="SignupTitle">create account</div>
-        <div class="SignupInputWrapper">
-          <span class="SignupInputName">name</span>
-          <input
-            id="SignupName"
-            class="SignupInput"
-            type="text"
-            placeholder="write name"
-          />
-        </div>
-        <div class="SignupInputWrapper">
-          <span class="SignupInputName">phone number</span>
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              padding-bottom: 20px;
-            "
-          >
-            <div style="display: felx">
-              <input
-                id="PhoneNumber01"
-                class="SignupInput"
-                type="text"
-                maxlength="3"
-                value="778"
-                readonly
-              /><span class="PhoneSlash">-</span
-              ><input
-                id="PhoneNumber02"
-                class="SignupInput"
-                type="text"
-                maxlength="3"
-              /><span class="PhoneSlash">-</span
-              ><input
-                id="PhoneNumber03"
-                class="SignupInput"
-                type="text"
-                maxlength="4"
-              />
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>login/create account</title>
+        <link rel="stylesheet" href="./index.css" />
+        <script src="./index.js"></script>
+        <script src="./signup.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <!-- 전체 컨테이너 -->
+        <div class="Container">
+            <!-- 여기서부터 회원가입 모달창 -->
+            <div id="ModalContainer" onclick="CloseModal()"></div>
+            <div id="SignupModalWrapper">
+                <div class="SignupTitle">create account</div>
+                <div class="SignupInputWrapper">
+                    <span class="SignupInputName">name</span>
+                    <input
+                        id="SignupName"
+                        class="SignupInput"
+                        type="text"
+                        placeholder="write name"
+                    />
+                </div>
+                <div class="SignupInputWrapper">
+                    <span class="SignupInputName">phone number</span>
+                    <div
+                        style="
+                            display: flex;
+                            justify-content: space-between;
+                            padding-bottom: 20px;
+                        "
+                    >
+                        <div style="display: felx">
+                            <input
+                                id="PhoneNumber0"
+                                class="SignupInput"
+                                type="text"
+                                maxlength="2"
+                                value="+1"
+                                readonly
+                            /><span class="PhoneSlash">-</span>
+                            <input
+                                id="PhoneNumber01"
+                                class="SignupInput"
+                                type="text"
+                                maxlength="3"
+                            /><span class="PhoneSlash">-</span
+                            ><input
+                                id="PhoneNumber02"
+                                class="SignupInput"
+                                type="text"
+                                maxlength="3"
+                            /><span class="PhoneSlash">-</span
+                            ><input
+                                id="PhoneNumber03"
+                                class="SignupInput"
+                                type="text"
+                                maxlength="4"
+                            />
+                        </div>
+                        <span
+                            class="NumberVailidationBtn"
+                            onclick="getValidationNumber()"
+                            >send validation code</span
+                        >
+                    </div>
+                    <div
+                        id="ValidationInputWrapper"
+                        style="display: none; align-items: center"
+                    >
+                        <input
+                            id="TokenInput"
+                            class="ValidationInput"
+                            type="text"
+                            placeholder="type validation code"
+                        />
+                        <span id="LimitTime">1:00</span>
+                        <div
+                            class="NumberVailidationBtn"
+                            onclick="submitToken()"
+                        >
+                            validation
+                        </div>
+                    </div>
+                </div>
+                <div class="SignupInputWrapper">
+                    <span class="SignupInputName">favorite site</span>
+                    <input
+                        id="SignupPrefer"
+                        class="SignupInput"
+                        type="text"
+                        placeholder="write favorite site"
+                    />
+                </div>
+                <div class="SignupInputWrapper">
+                    <span class="SignupInputName">email</span>
+                    <input
+                        id="SignupEmail"
+                        class="SignupInput"
+                        type="text"
+                        placeholder="enter email"
+                    />
+                </div>
+                <div class="SignupInputWrapper">
+                    <span class="SignupInputName">password</span>
+                    <input
+                        id="SignupPwd"
+                        class="SignupInput"
+                        type="password"
+                        placeholder="enter password"
+                    />
+                </div>
+                <div class="ButtonWrapper">
+                    <div class="Signup" onclick="submitSignup()">
+                        create account
+                    </div>
+                </div>
             </div>
-            <span class="NumberVailidationBtn" onclick="getValidationNumber()"
-              >send validation code</span
-            >
-          </div>
-          <div
-            id="ValidationInputWrapper"
-            style="display: none; align-items: center"
-          >
-            <input
-              id="TokenInput"
-              class="ValidationInput"
-              type="text"
-              placeholder="type validation code"
-            />
-            <span id="LimitTime">1:00</span>
-            <div class="NumberVailidationBtn" onclick="submitToken()">
-              validation
+
+            <!-- 여기까지가 회원가입 모달창 -->
+
+            <!-- 본 컨텐츠 -->
+            <div class="Wrapper">
+                <div class="LogoWrapper">
+                    <img class="LogoImg" src="../img/starbucks.png" />
+                    <div class="LogoTitle">CodeBucks</div>
+                    <a href="../menu/index.html" class="Menu_Button">
+                        go to meun</a
+                    >
+                </div>
+                <div id="SocialLoginGoogle">
+                    <img class="SocialLoginButtonImg" src="../img/google.png" />
+                    <div class="SocialLoginButtonTitle">login goole</div>
+                </div>
+                <div id="SocialLoginFacebook">
+                    <img
+                        class="SocialLoginButtonImg"
+                        src="../img/facebook.png"
+                    />
+                    <div class="SocialLoginButtonTitle">login facebook</div>
+                </div>
+                <div class="SignupWrapper">
+                    if you don't have account
+                    <span class="SignupButton" onclick="OpenModal()"
+                        >create account</span
+                    >
+                </div>
             </div>
-          </div>
         </div>
-        <div class="SignupInputWrapper">
-          <span class="SignupInputName">favorite site</span>
-          <input
-            id="SignupPrefer"
-            class="SignupInput"
-            type="text"
-            placeholder="write favorite site"
-          />
-        </div>
-        <div class="SignupInputWrapper">
-          <span class="SignupInputName">email</span>
-          <input
-            id="SignupEmail"
-            class="SignupInput"
-            type="text"
-            placeholder="enter email"
-          />
-        </div>
-        <div class="SignupInputWrapper">
-          <span class="SignupInputName">password</span>
-          <input
-            id="SignupPwd"
-            class="SignupInput"
-            type="password"
-            placeholder="enter password"
-          />
-        </div>
-        <div class="ButtonWrapper">
-          <div class="Signup" onclick="submitSignup()">create account</div>
-        </div>
-      </div>
-
-      <!-- 여기까지가 회원가입 모달창 -->
-
-      <!-- 본 컨텐츠 -->
-      <div class="Wrapper">
-        <div class="LogoWrapper">
-          <img class="LogoImg" src="../img/starbucks.png" />
-          <div class="LogoTitle">CodeBucks</div>
-          <a href="../menu/index.html" class="Menu_Button"> go to  meun</a>
-        </div>
-        <div id="SocialLoginGoogle">
-          <img class="SocialLoginButtonImg" src="../img/google.png" />
-          <div class="SocialLoginButtonTitle">login goole</div>
-        </div>
-        <div id="SocialLoginFacebook">
-          <img class="SocialLoginButtonImg" src="../img/facebook.png" />
-          <div class="SocialLoginButtonTitle">login facebook</div>
-        </div>
-        <div class="SignupWrapper">
-          if you don't have account
-          <span class="SignupButton" onclick="OpenModal()">create account</span>
-        </div>
-      </div>
-    </div>
-  </body>
+    </body>
 </html>
