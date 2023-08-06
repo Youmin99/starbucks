@@ -16,7 +16,6 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)));
 app.use(cors());
 
 app.get('/users', (req, res) => {
-    // 1. 데이터를 조회하는 로직 => DB에 접속해서 데이터 꺼내오기
     const result = [
         {
             email: 'aaa@gmail.com',
@@ -45,7 +44,6 @@ app.get('/users', (req, res) => {
 });
 
 app.get('/starbucks', (req, res) => {
-    // 1. 데이터를 조회하는 로직 => DB에 접속해서 데이터 꺼내오기
     const result = [
         { name: '아메리카노', kcal: 5 },
         { name: '아메리카노', kcal: 5 },
@@ -58,7 +56,6 @@ app.get('/starbucks', (req, res) => {
         { name: '아메리카노', kcal: 5 },
     ];
 
-    // 2. 꺼내온 결과 응답 주기
     res.send(result);
 });
 
@@ -87,6 +84,5 @@ app.post('/email', (req, res) => {
 });
 
 app.listen(5000, () => {
-    console.log('백엔드 API 서버가 켜졌어요!!!');
     console.log(`http://localhost:5000/`);
 });
