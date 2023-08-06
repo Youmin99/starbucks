@@ -1,21 +1,18 @@
-// 휴대폰 인증 토큰 전송하기
-//import 'dotenv/config';
-
 const getValidationNumber = async () => {
     document.querySelector('#ValidationInputWrapper').style.display = 'flex';
-    console.log(11);
+
     const myphone =
         document.getElementById('PhoneNumber01').value +
         document.getElementById('PhoneNumber02').value +
         document.getElementById('PhoneNumber03').value;
-    console.log(document.getElementById('PhoneNumber01').value);
+    console.log(myphone);
     axios
         .post('http://localhost:5000/tokens/phone', {
             qqq: myphone,
         })
         .then((res) => {
             console.log(res);
-            document.getElementById('result').innerText = res.data;
+            //document.getElementById('result').innerText = res.data;
         });
 };
 

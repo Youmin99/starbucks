@@ -2,6 +2,7 @@ import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { options } from './swagger/config.js';
+import { checkPhone, getToken, sendTokenToSMS } from './phone.js';
 import cors from 'cors';
 
 const app = express();
@@ -59,16 +60,13 @@ app.get('/starbucks', (req, res) => {
 app.post('/tokens/phone', (req, res) => {
     const myphone = req.body.qqq;
 
-    // 1. 휴대폰번호 자릿수 맞는지 확인하기(10~11자리)
     const isValid = checkPhone(myphone);
     if (isValid === false) return;
 
-    // 2. 핸드폰 토큰 6자리 만들기
     const mytoken = getToken();
 
-    // 3. 핸드폰번호에 토큰 전송하기
-    // sendTokenToSMS(myphone, mytoken);
-    res.send('인증완료!!!');
+    sendTokenToSMS(myphone, mytoken);
+    res.send('Verification completed!!!');
 });
 
 app.listen(5000, () => {
