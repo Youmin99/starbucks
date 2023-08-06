@@ -1,15 +1,14 @@
 import 'dotenv/config'; // SDK 가져오기
-import * as Twilio from 'twilio';
+import Twilio from 'twilio/lib/rest/Twilio.js';
 
 export async function sendTokenToSMS(myphone, token) {
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken = process.env.TWILIO_AUTH_TOKEN;
     const sender = process.env.SMS_SENDER;
 
-    const client = Twilio(accountSid, authToken);
-    console.log(sender);
+    const client = new Twilio(accountSid, authToken);
 
-    const m = await client.messages
+    await client.messages
         .create({
             body: 'hi', //`  요청하신 인증번호는 [${token}] 입니다.`
             from: `+${sender}`,
