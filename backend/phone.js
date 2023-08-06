@@ -10,13 +10,11 @@ export async function sendTokenToSMS(myphone, token) {
 
     await client.messages
         .create({
-            body: 'hi', //`  요청하신 인증번호는 [${token}] 입니다.`
+            body: `Your verification code is: [${token}]`,
             from: `+${sender}`,
             to: `+1${myphone}`,
         })
         .then((message) => console.log(message.sid));
-
-    // console.log(myphone + '번호로 인증번호' + token + '를 전송합니다!!!');
 }
 
 export function checkPhone(myphone) {

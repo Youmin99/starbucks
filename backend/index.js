@@ -3,6 +3,11 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import { options } from './swagger/config.js';
 import { checkPhone, getToken, sendTokenToSMS } from './phone.js';
+import {
+    checkEmail,
+    getWelcomeTemplate,
+    sendTemplateToEmail,
+} from './email.js';
 import cors from 'cors';
 
 const app = express();
@@ -67,6 +72,18 @@ app.post('/tokens/phone', (req, res) => {
 
     sendTokenToSMS(myphone, mytoken);
     res.send('Verification completed!!!');
+});
+
+app.post('/email', (req, res) => {
+    const { name, email } = req.body;
+
+    const isValid = checkEmail(email);
+    if (isValid === false) return;
+
+    const myTemplate = getWelcomeTemplate({ name });
+
+    sendTemplateToEmail(email, myTemplate, name);
+    res.send('Registration completed!!!');
 });
 
 app.listen(5000, () => {

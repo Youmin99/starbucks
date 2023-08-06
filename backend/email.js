@@ -1,4 +1,6 @@
 import nodemailer from 'nodemailer';
+import { getToday } from './utils.js';
+import 'dotenv/config';
 
 export function checkEmail(myemail) {
     if (myemail === undefined || myemail.includes('@') === false) {
@@ -9,26 +11,24 @@ export function checkEmail(myemail) {
     }
 }
 
-export function getWelcomeTemplate({ name, age, school }) {
+export function getWelcomeTemplate({ name }) {
     const mytemplate = `
         <html>
             <body>
-                <h1>wellcome! ${name}</h1>
+                <h1>wellcome! cordbucks ${name}</h1>
                 <hr />
                 <div>name: ${name}</div>
-                <div>age: ${age}</div>
-                <div>school: ${school}</div>
-                <div>date: ${school}</div>
+                <div>date: ${getToday()}</div>
             </body>
         </html>
     `;
     return mytemplate;
 }
 
-export async function sendTemplateToEmail(myemail, mytemplate) {
-    const EMAIL_USER = 'logic9904@gmail.com';
-    const EMAIL_PASS = 'pvrkhucwthoelyxs';
-    const EMAIL_SENDER = 'logic9904@gmail.com';
+export async function sendTemplateToEmail(myemail, mytemplate, name) {
+    const EMAIL_USER = process.env.EMAIL_USER;
+    const EMAIL_PASS = process.env.EMAIL_PASS;
+    const EMAIL_SENDER = process.env.EMAIL_SENDER;
 
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -41,7 +41,7 @@ export async function sendTemplateToEmail(myemail, mytemplate) {
     const result = await transporter.sendMail({
         from: EMAIL_SENDER,
         to: myemail,
-        subject: '[youmin] welcome to join!!!',
+        subject: `${name} welcome to join!!!`,
         html: mytemplate,
     });
     console.log(result);
