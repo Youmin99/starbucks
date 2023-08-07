@@ -3,14 +3,15 @@ version: '3.7'
 # 컴퓨터들
 services:
     # 컴퓨터이름
-    my-backend:
+    sturbucks-backend:
         build:
             context: .
             dockerfile: Dockerfile
         volumes:
             - ./index.js:/myfolder/index.js
+            - ../backend:/myfolder
         ports:
-            - 4000:4000
+            - 5000:5000
 
     # 컴퓨터이름
     my-database:
