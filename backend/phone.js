@@ -1,4 +1,4 @@
-import 'dotenv/config'; // SDK 가져오기
+import 'dotenv/config';
 import Twilio from 'twilio/lib/rest/Twilio.js';
 
 export async function sendTokenToSMS(myphone, token) {

@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { getToday } from './utils.js';
+import { Token } from './models/token.model.js';
 import 'dotenv/config';
 
 export function checkEmail(myemail) {
@@ -9,6 +10,12 @@ export function checkEmail(myemail) {
     } else {
         return true;
     }
+}
+
+export async function checkValidation(myphone) {
+    const tokenData = await Token.find({ phone: myphone });
+
+    return tokenData[0].isAuth;
 }
 
 export function getWelcomeTemplate({ name }) {

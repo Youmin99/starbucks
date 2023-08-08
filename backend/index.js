@@ -7,6 +7,7 @@ import {
     checkEmail,
     getWelcomeTemplate,
     sendTemplateToEmail,
+    checkValidation,
 } from './email.js';
 import mongoose from 'mongoose';
 import { User } from './models/user.model.js';
@@ -73,12 +74,33 @@ app.post('/tokens/phone', async (req, res) => {
         await Token.updateOne({ phone: myphone }, { token: mytoken });
     }
 
-    // sendTokenToSMS(myphone, mytoken);
+    //sendTokenToSMS(myphone, mytoken);
     res.send('Verification completed!!!');
 });
 
-app.post('/email', (req, res) => {
-    const { name, email } = req.body;
+app.patch('/tokens/phone', async (req, res) => {
+    const token = req.body.token;
+    const myphone = req.body.phone;
+
+    const tokenData = await Token.find({ phone: myphone });
+
+    if (token == tokenData[0].token) {
+        await Token.updateOne({ phone: myphone }, { isAuth: true });
+    } else {
+        res.send('Verification fail');
+    }
+
+    res.send('Verification completed!!!');
+});
+
+app.post('/email', async (req, res) => {
+    const { name, email, phone } = req.body;
+
+    const isPhoneValid = await checkValidation(phone);
+    if (isPhoneValid === false) {
+        console.log('Phone is not Valid');
+        return;
+    }
 
     const isValid = checkEmail(email);
     if (isValid === false) return;

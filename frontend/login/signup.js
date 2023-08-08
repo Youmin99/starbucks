@@ -12,19 +12,34 @@ const getValidationNumber = async () => {
         })
         .then((res) => {
             console.log(res);
-            //document.getElementById('result').innerText = res.data;
         });
 };
 
-// 회원 가입 API 요청
+const submitToken = async () => {
+    axios
+        .patch('http://localhost:5000/tokens/phone', {
+            token: document.getElementById('TokenInput').value,
+            phone:
+                document.getElementById('PhoneNumber01').value +
+                document.getElementById('PhoneNumber02').value +
+                document.getElementById('PhoneNumber03').value,
+        })
+        .then((res) => {
+            document.getElementById('result').innerText = res.data;
+        });
+};
+
 const submitSignup = async () => {
     axios
         .post('http://localhost:5000/email', {
             name: document.getElementById('SignupName').value,
             email: document.getElementById('SignupEmail').value,
+            phone:
+                document.getElementById('PhoneNumber01').value +
+                document.getElementById('PhoneNumber02').value +
+                document.getElementById('PhoneNumber03').value,
         })
         .then((res) => {
             console.log(res);
-            //document.getElementById('result').innerText = res.data;
         });
 };
