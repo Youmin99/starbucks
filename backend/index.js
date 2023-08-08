@@ -9,6 +9,7 @@ import {
     sendTemplateToEmail,
     checkValidation,
 } from './email.js';
+import { opengraph } from './og.js';
 import mongoose from 'mongoose';
 import { User } from './models/user.model.js';
 import { Token } from './models/token.model.js';
@@ -26,12 +27,23 @@ app.get('/users', async (req, res) => {
 });
 
 app.post('/users', async (req, res) => {
+    const { name, email, pwd, phone, prefer } = req.body;
+
+    const isPhoneValid = await checkValidation(phone);
+    if (isPhoneValid === false) {
+        res.statusCode = 422;
+        res.send('Phone is not Valid');
+    }
+
+    const OG = await opengraph(prefer);
+
     const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        pwd: req.body.pwd,
-        phone: req.body.phone,
-        prefer: req.body.prefer,
+        name: name,
+        email: email,
+        pwd: pwd,
+        phone: phone,
+        prefer: prefer,
+        og: { title: OG.title, image: OG.image, description: OG.description },
     });
 
     await user.save();
