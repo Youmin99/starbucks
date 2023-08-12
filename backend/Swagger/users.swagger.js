@@ -1,10 +1,40 @@
-
+/**
+ * @swagger
+ * /users:
+ *   post:
+ *     summary: user registration
+ *     tags: [users]
+ *     parameters:
+ *       - in: formData
+ *         name: name
+ *         type: string
+ *         description: A user's name.
+ *       - in: formData
+ *         name: email
+ *         type: string
+ *         description: A user's email.
+ *       - in: formData
+ *         name: prefer
+ *         type: string
+ *         description: A user's prefer website.
+ *       - in: formData
+ *         name: pwd
+ *         type: string
+ *         description: A user's pwd.
+ *       - in: formData
+ *         name: phone
+ *         type: string
+ *         description: A user's phone.
+ *     responses:
+ *       200:
+ *         description: Registration completed!!!
+ */
 
 /**
  * @swagger
  * /users:
  *   get:
- *     summary: 게시글 등록하기
+ *     summary: user description
  *     tags: [users]
  *     parameters:
  *       - in: query
@@ -12,23 +42,41 @@
  *         type: int
  *     responses:
  *       200:
- *         description: 성공
+ *         description: success
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 properties:
- *                   number:
- *                     type: int
- *                     example: 1
- *                   writer:
+ *                   name:
  *                     type: string
- *                     example: 영희
- *                   title:
+ *                     example: user
+ *                   email:
  *                     type: string
- *                     example: 좋은아침 입니다~
- *                   contents:
+ *                     example: aaaa@gmail.com
+ *                   prefer:
  *                     type: string
- *                     example: 오늘 하루도 파이팅 하세요!
+ *                     example: google.com
+ *                   pwd:
+ *                     type: string
+ *                     example: 0000
+ *                   phone:
+ *                     type: string
+ *                     example: +1 111-111-1111
+ *                   og:
+ *                     type: array
+ *                     items:
+ *                       properties:
+ *                         title:
+ *                           type: string
+ *                         description:
+ *                           type: string
+ *                         image:
+ *                           type: string
+ *                       example:
+ *                         title:  google
+ *                         description: google is search website
+ *                         image: aa.png
+ *
  */

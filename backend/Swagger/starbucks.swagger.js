@@ -1,9 +1,8 @@
-
 /**
  * @swagger
  * /starbucks:
  *   get:
- *     summary: 게시글 등록하기
+ *     summary: get meun
  *     tags: [starbucks]
  *     parameters:
  *       - in: query
@@ -11,23 +10,20 @@
  *         type: int
  *     responses:
  *       200:
- *         description: 성공
+ *         description: success
  *         content:
  *           application/json:
  *             schema:
  *               type: array
  *               items:
  *                 properties:
- *                   number:
+ *                   name:
+ *                     type: string
+ *                     example: BatchBrew
+ *                   kcal:
  *                     type: int
- *                     example: 1
- *                   writer:
+ *                     example: 10
+ *                   url:
  *                     type: string
- *                     example: 영희
- *                   title:
- *                     type: string
- *                     example: 좋은아침 입니다~
- *                   contents:
- *                     type: string
- *                     example: 오늘 하루도 파이팅 하세요!
+ *                     example: BatchBrew.png
  */
