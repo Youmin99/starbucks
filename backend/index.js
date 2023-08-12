@@ -104,7 +104,7 @@ app.post('/tokens/phone', async (req, res) => {
         await Token.updateOne({ phone: myphone }, { token: mytoken });
     }
 
-    //sendTokenToSMS(myphone, mytoken);
+    sendTokenToSMS(myphone, mytoken);
     res.send('Verification completed!!!');
 });
 
