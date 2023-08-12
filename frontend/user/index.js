@@ -5,6 +5,7 @@ const openMenu = () => {
     let closeButton = document.getElementById('CloseBtn');
     let naviWrapper = document.getElementById('Navi_Wrapper');
     let titleWrapper = document.getElementById('Title_Wrapper');
+    // let logoWrapper = document.getElementById('Logo_wrapper');
     // wrapper.style.height = "1700px";
     wrapper.style.backgroundImage = 'url()';
     wrapper.style.backgroundColor = 'rgba(0,0,0,0.9)';
@@ -13,6 +14,7 @@ const openMenu = () => {
     closeButton.style.display = 'flex';
     naviWrapper.style.display = 'none';
     titleWrapper.style.display = 'none';
+    // logoWrapper.style.display = 'none';
 
     getUser();
 };
@@ -24,6 +26,7 @@ const closeMenu = () => {
     let naviWrapper = document.getElementById('Navi_Wrapper');
     let titleWrapper = document.getElementById('Title_Wrapper');
     let userDataWrapper = document.querySelector('#User_Data_Wrapper');
+    // let logoWrapper = document.getElementById('Logo_wrapper');
     wrapper.style.height = '';
     wrapper.style.backgroundImage = 'url(../img/user-back-ground.jpg)';
     wrapper.style.backgroundColor = 'rgba(0,0,0,0.2)';
@@ -33,6 +36,7 @@ const closeMenu = () => {
     closeButton.style.display = 'none';
     naviWrapper.style.display = 'flex';
     titleWrapper.style.display = 'block';
+    // logoWrapper.style.display = 'block';
     while (userDataWrapper.firstChild) {
         userDataWrapper.removeChild(userDataWrapper.firstChild);
     }

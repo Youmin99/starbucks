@@ -24,7 +24,9 @@
                     <a href="../login/index.html" class="Back_Button">
                         🔙login
                     </a>
-                    <a href="../menu/index.html" class="Back_Button"> menu </a>
+                    <a href="../menu/index.html" class="Back_Button">
+                        menu🔜
+                    </a>
                 </div>
                 <div id="Title_Wrapper">user list</div>
                 <div onclick="openMenu()" id="Open_Menu_Btn">
@@ -34,7 +36,15 @@
                     <span id="CloseBtn" onclick="closeMenu()">X</span>
                 </div>
                 <div id="Menu_Background">
-                    <div class="User_Table_Item">
+                    <div
+                        class="User_Table_Item"
+                        style="
+                            width: 100%;
+                            display: flex;
+                            justify-content: space-between;
+                        "
+                    >
+                        <div class="Item_Info" id="name">name</div>
                         <div class="Item_Info" id="email">email</div>
                         <div class="Item_Info" id="phone">phone number</div>
                         <div class="Item_Info" id="prefer">favorite site</div>

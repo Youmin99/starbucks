@@ -31,9 +31,11 @@ const submitToken = async () => {
 
 const submitSignup = async () => {
     axios
-        .post('http://localhost:5000/email', {
+        .post('http://localhost:5000/users', {
             name: document.getElementById('SignupName').value,
             email: document.getElementById('SignupEmail').value,
+            prefer: document.getElementById('SignupPrefer').value,
+            pwd: document.getElementById('SignupPwd').value,
             phone:
                 document.getElementById('PhoneNumber01').value +
                 document.getElementById('PhoneNumber02').value +

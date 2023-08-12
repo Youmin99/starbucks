@@ -21,6 +21,7 @@ const createMenuCard = (data) => {
     const menuCardInfo = document.createElement('div');
     menuCardInfo.className = 'Menu_Card_Info';
     menuCardInfo.textContent = data?.kcal || 'kcal';
+    menuCardImgBox.style.backgroundImage = `url(../img/${data.url})`;
 
     const menuWrapper = document.querySelector('#Menu_Background');
     menuCardWrapper.appendChild(menuCardImgBox);

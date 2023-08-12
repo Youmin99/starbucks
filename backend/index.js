@@ -35,6 +35,9 @@ app.post('/users', async (req, res) => {
         res.send('Phone is not Valid');
     }
 
+    const isValid = checkEmail(email);
+    if (isValid === false) return;
+
     const OG = await opengraph(prefer);
 
     const user = new User({
@@ -47,24 +50,39 @@ app.post('/users', async (req, res) => {
     });
 
     await user.save();
+
+    const myTemplate = getWelcomeTemplate({ name });
+
+    sendTemplateToEmail(email, myTemplate, name);
+    res.send('Registration completed!!!');
 });
 
 app.get('/starbucks', async (req, res) => {
     const result = [
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
-        { name: '아메리카노', kcal: 5 },
+        { name: 'Batch Brew', kcal: 5, url: 'BatchBrew.png' },
+        { name: 'Caffe Latte', kcal: 15, url: 'caffelatte.png' },
+        { name: 'Caffe Mocha', kcal: 5, url: 'caffemocha.png' },
+        { name: 'Cappuccino', kcal: 5, url: 'cappuccino.png' },
+        {
+            name: 'Dark Chocolate Latte',
+            kcal: 5,
+            url: 'DarkChocolateLatte.png',
+        },
+        { name: 'Espresso', kcal: 5, url: 'espresso.png' },
+        { name: 'Iced Caffe Mocha', kcal: 5, url: 'icedcaffemocha.png' },
+        {
+            name: 'Iced White Chocolate Mocha',
+            kcal: 5,
+            url: 'WhiteChocolateMocha.png',
+        },
+        {
+            name: 'Caramel Latte',
+            kcal: 5,
+            url: 'CaramelLatte.png',
+        },
     ];
 
-    const user = await User.find();
-
-    res.send(user);
+    res.send(result);
 });
 
 app.post('/tokens/phone', async (req, res) => {
@@ -103,24 +121,6 @@ app.patch('/tokens/phone', async (req, res) => {
     }
 
     res.send('Verification completed!!!');
-});
-
-app.post('/email', async (req, res) => {
-    const { name, email, phone } = req.body;
-
-    const isPhoneValid = await checkValidation(phone);
-    if (isPhoneValid === false) {
-        console.log('Phone is not Valid');
-        return;
-    }
-
-    const isValid = checkEmail(email);
-    if (isValid === false) return;
-
-    const myTemplate = getWelcomeTemplate({ name });
-
-    sendTemplateToEmail(email, myTemplate, name);
-    res.send('Registration completed!!!');
 });
 
 mongoose
