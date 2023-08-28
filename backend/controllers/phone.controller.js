@@ -1,4 +1,9 @@
 import { Token } from '../models/token.model.js';
+import {
+    checkPhone,
+    getToken,
+    sendTokenToSMS,
+} from './controllers/services/phone.js';
 
 export class PhoneController {
     postPhone = async (req, res) => {
