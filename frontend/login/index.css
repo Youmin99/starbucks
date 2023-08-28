@@ -175,6 +175,7 @@ body {
     height: 32px;
     margin-right: 20px;
 }
+
 .SocialLoginButtonTitle {
     opacity: 1;
     font-size: 26px;
@@ -196,6 +197,7 @@ body {
     margin-top: 100px;
     cursor: pointer;
 }
+
 .SignupWrapper:hover {
     background-color: #135f26;
     color: #fff;
